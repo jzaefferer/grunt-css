@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       var result = csslint.verify( grunt.file.read( filepath ), ruleset );
       result.messages.forEach(function( message ) {
         grunt.log.writeln( "[".red + ( "L" + message.line ).yellow + ":".red + ( "C" + message.col ).yellow + "]".red );
-        log[ message.type === "error" ? "error" : "writeln" ]( message.message + " " + message.rule.desc + " (" + message.rule.id + ")" );
+        grunt.log[ message.type === "error" ? "error" : "writeln" ]( message.message + " " + message.rule.desc + " (" + message.rule.id + ")" );
       });
       if ( result.messages.length ) {
         hadErrors += 1;
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
     grunt.log.writeln( "Lint free" );
   });
 
-  grunt.registerMultiTask( "css_min", "Minify CSS files with Sqwish.", function() {
+  grunt.registerMultiTask( "cssmin", "Minify CSS files with Sqwish.", function() {
     var max = grunt.helper( "concat", grunt.file.expandFiles( this.file.src ) );
     var min = require( "sqwish" ).minify( max, false );
     grunt.file.write( this.file.dest, min );
