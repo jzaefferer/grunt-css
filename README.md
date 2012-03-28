@@ -1,6 +1,6 @@
 # grunt-css
 
-Grunt plugin for linting and minifying CSS
+[Grunt](https://github.com/cowboy/grunt) plugin for linting and minifying CSS
 
 ## Getting Started
 Install the module with: `npm install grunt-css`
