@@ -1,7 +1,7 @@
 {
   "name": "grunt-css",
   "description": "Grunt plugin for linting and minifying CSS",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/jzaefferer/grunt-css",
   "author": {
     "name": "Jörn Zaefferer",

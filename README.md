@@ -7,13 +7,15 @@ Install the module with: `npm install grunt-css`
 
 Then load it from your own grunt.js file:
 
-	require('grunt-css')(grunt);
-
-This will likely change, depending on what grunt plugin will look like in the future.
+	task.loadNpmTasks('grunt-css');
 
 ## Documentation
 
-This plugin provides two tasks: `cssmin` and `csslint`.
+This plugin provides two tasks: `cssmin` and `csslint`, both .
+
+This task is a [multi task][types_of_tasks], meaning that grunt will automatically iterate over all `cssmin` and `csslint` targets if a target is not specified.
+
+[types_of_tasks]: https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md
 
 ### cssmin
 
@@ -79,6 +81,8 @@ Please use the issue tracker and pull requests.
 
 ## Release History
 
+* 0.1.2 Readme updates
+* 0.1.1 Readme updates
 * 0.1.0 Initial release
 
 ## License
