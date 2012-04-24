@@ -30,7 +30,7 @@ module.exports = function(grunt) {
       // skip empty files
       if (file.length) {
         grunt.log.writeln( "Linting " + filepath );
-        result = csslint.verify( grunt.file.read( filepath ), ruleset );
+        result = csslint.verify( file, ruleset );
 
         result.messages.forEach(function( message ) {
           grunt.log.writeln( "[".red + (typeof message.line !== "undefined" ? ( "L" + message.line ).yellow + ":".red + ( "C" + message.col ).yellow : "GENERAL".yellow) + "]".red );
