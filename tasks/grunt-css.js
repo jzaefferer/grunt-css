@@ -24,15 +24,25 @@ module.exports = function(grunt) {
     }
     var hadErrors = 0;
     files.forEach(function( filepath ) {
-      grunt.log.writeln( "Linting " + filepath );
-      var result = csslint.verify( grunt.file.read( filepath ), ruleset );
-      result.messages.forEach(function( message ) {
-        grunt.log.writeln( "[".red + ( "L" + message.line ).yellow + ":".red + ( "C" + message.col ).yellow + "]".red );
-        grunt.log[ message.type === "error" ? "error" : "writeln" ]( message.message + " " + message.rule.desc + " (" + message.rule.id + ")" );
-      });
-      if ( result.messages.length ) {
-        hadErrors += 1;
+      var file = grunt.file.read( filepath ),
+        result;
+
+      // skip empty files
+      if (file.length) {
+        grunt.log.writeln( "Linting " + filepath );
+        result = csslint.verify( grunt.file.read( filepath ), ruleset );
+
+        result.messages.forEach(function( message ) {
+          grunt.log.writeln( "[".red + (typeof message.line !== "undefined" ? ( "L" + message.line ).yellow + ":".red + ( "C" + message.col ).yellow : "GENERAL".yellow) + "]".red );
+          grunt.log[ message.type === "error" ? "error" : "writeln" ]( message.message + " " + message.rule.desc + " (" + message.rule.id + ")" );
+        });
+        if ( result.messages.length ) {
+          hadErrors += 1;
+        }
+      } else {
+        grunt.log.writeln( "Skipping empty file " + filepath);
       }
+
     });
     if (hadErrors) {
       return false;
