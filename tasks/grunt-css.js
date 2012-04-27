@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 
       // skip empty files
       if (file.length) {
-        grunt.log.writeln( "Linting " + filepath );
+        grunt.verbose.writeln( "Linting " + filepath );
         result = csslint.verify( file, ruleset );
 
         result.messages.forEach(function( message ) {
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
     if (hadErrors) {
       return false;
     }
-    grunt.log.writeln( "Lint free" );
+    grunt.log.writeln( "Lint free files: " + files.length );
   });
 
   grunt.registerMultiTask( "cssmin", "Minify CSS files with Sqwish.", function() {

@@ -30,10 +30,18 @@ module.exports = function(grunt) {
       globals: {
         exports: true
       }
+    },
+    csslint: {
+      valid: 'test/valid.css',
+      empty: 'test/empty.css',
+      all: 'test/*.css'
     }
   });
 
-  // Default task.
-  grunt.registerTask('default', 'lint test');
+  // Load local tasks.
+  grunt.loadTasks('tasks');
+
+  // Default task. csslint:all will fail, that's okay until there's unit tests
+  grunt.registerTask('default', 'lint csslint');
 
 };
