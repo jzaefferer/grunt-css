@@ -12,6 +12,7 @@ module.exports = function(grunt) {
     var csslint = require( "csslint" ).CSSLint;
     var files = grunt.file.expandFiles( this.file.src );
     var ruleset = {};
+    var verbose = grunt.verbose;
     csslint.getRules().forEach(function( rule ) {
       ruleset[ rule.id ] = 1;
     });
@@ -25,12 +26,19 @@ module.exports = function(grunt) {
     var hadErrors = 0;
     files.forEach(function( filepath ) {
       var file = grunt.file.read( filepath ),
+        message = "Linting " + filepath + "...",
         result;
 
       // skip empty files
       if (file.length) {
-        grunt.verbose.writeln( "Linting " + filepath );
         result = csslint.verify( file, ruleset );
+        verbose.write( message );
+        if (result.messages.length) {
+          verbose.or.write( message );
+          grunt.log.error();
+        } else {
+          verbose.ok();
+        }
 
         result.messages.forEach(function( message ) {
           grunt.log.writeln( "[".red + (typeof message.line !== "undefined" ? ( "L" + message.line ).yellow + ":".red + ( "C" + message.col ).yellow : "GENERAL".yellow) + "]".red );
