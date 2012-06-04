@@ -85,12 +85,6 @@ node -e "require('csslint').CSSLint.getRules().forEach(function(x) { console.log
 
 Please use the issue tracker and pull requests.
 
-## Release History
-
-* 0.1.2 Readme updates
-* 0.1.1 Readme updates
-* 0.1.0 Initial release
-
 ## License
 Copyright (c) 2012 Jörn Zaefferer
 Licensed under the MIT license.
