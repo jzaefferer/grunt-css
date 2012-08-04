@@ -36,6 +36,17 @@ module.exports = function(grunt) {
       valid: 'test/valid.css',
       empty: 'test/empty.css',
       all: 'test/*.css'
+    },
+    banner: '/*my awesome css banner */',
+    cssmin: {
+      plain: {
+        src: 'test/valid.css',
+        dest: 'valid.min.css'
+      },
+      banner: {
+        src: ['<banner:banner>', 'test/valid.css' ],
+        dest: 'valid.min.banner.css'
+      }
     }
   });
 
