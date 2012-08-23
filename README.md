@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/jzaefferer/grunt-css.png)](http://travis-ci.org/jzaefferer/grunt-css)
 # grunt-css
 
 [Grunt](https://github.com/cowboy/grunt) plugin for linting and minifying CSS
