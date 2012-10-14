@@ -7,6 +7,12 @@
  */
 
 module.exports = function(grunt) {
+  function min_max(min, max) {
+    var gzip = require('gzip-js');
+    var gzipSize = String(gzip.zip(min, {}).length);
+    grunt.log.writeln('Uncompressed size: ' + String(max.length).green + ' bytes.');
+    grunt.log.writeln('Compressed size: ' + gzipSize.green + ' bytes gzipped (' + String(min.length).green + ' bytes minified).');
+  }
 
   grunt.registerMultiTask( "csslint", "Lint CSS files with csslint", function() {
     var csslint = require( "csslint" ).CSSLint;
@@ -73,7 +79,7 @@ module.exports = function(grunt) {
     var min = banner + require( "sqwish" ).minify( max, false );
     grunt.file.write( this.file.dest, min );
     grunt.log.writeln( "File '" + this.file.dest + "' created." );
-    grunt.helper( "min_max_info", min, max );
+    min_max( min, max );
   });
 
 };

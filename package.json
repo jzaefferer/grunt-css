@@ -28,9 +28,10 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "grunt": "~0.3.4",
+    "grunt": "0.3.x",
     "sqwish": "0.2.x",
-    "csslint": "0.9.x"
+    "csslint": "0.9.x",
+    "gzip-js": "0.3.1"
   },
   "devDependencies": {
   },
