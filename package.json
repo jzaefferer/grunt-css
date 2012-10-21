@@ -24,9 +24,6 @@
   "engines": {
     "node": ">=0.6.0"
   },
-  "scripts": {
-    "test": "grunt test"
-  },
   "dependencies": {
     "sqwish": "0.2.0",
     "csslint": "0.9.9",
