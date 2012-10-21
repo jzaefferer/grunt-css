@@ -42,30 +42,32 @@ csslint: {
 
 For the current csslint version, these rules are available:
 
-	import
-	adjoining-classes
 	important
+	adjoining-classes
+	known-properties
 	box-sizing
 	box-model
-	known-properties
+	outline-none
 	duplicate-background-images
 	compatible-vendor-prefixes
 	display-property-grouping
-	overqualified-elements
+	qualified-headings
 	fallback-colors
 	duplicate-properties
 	empty-rules
 	errors
-	rules-count
+	shorthand
 	ids
+	gradients
 	font-sizes
 	font-faces
-	gradients
 	floats
-	outline-none
-	qualified-headings
+	underscore-property-hack
+	overqualified-elements
+	import
 	regex-selectors
-	shorthand
+	rules-count
+	star-property-hack
 	text-indent
 	unique-headings
 	universal-selector
