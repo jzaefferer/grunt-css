@@ -65,18 +65,10 @@ module.exports = function(grunt) {
   });
 
   grunt.registerMultiTask( "cssmin", "Minify CSS files with Sqwish.", function() {
-    // Get banner, if specified.
-    var banner = grunt.task.directive( this.file.src[0], function() {
-      return null;
-    });
-    if ( banner === null ) {
-      banner = '';
-    } else {
-      // Remove banner from src files as it is removed with minification (L73) anyway
-      this.file.src.shift();
-    }
-    var max = grunt.helper( "concat", grunt.file.expandFiles( this.file.src ) );
-    var min = banner + require( "sqwish" ).minify( max, false );
+    var helpers = require('grunt-lib-legacyhelpers').init(grunt);
+    // get banner here
+    var max = helpers.concat( grunt.file.expandFiles( this.file.src ) );
+    var min = require( "sqwish" ).minify( max, false );
     grunt.file.write( this.file.dest, min );
     grunt.log.writeln( "File '" + this.file.dest + "' created." );
     min_max( min, max );
