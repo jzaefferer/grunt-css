@@ -1,16 +1,13 @@
 module.exports = function(grunt) {
 
-console.log(grunt.file);
-
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    lint: {
-
-      files: ['grunt.js', 'tasks/**/*.js', 'test/**/*.js']
+    jshint: {
+      files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
     },
     watch: {
-      files: '<%= lint.files %>',
+      files: '<%= jshint.files %>',
       tasks: 'default'
     },
     jshint: {
@@ -54,8 +51,9 @@ console.log(grunt.file);
 
   // Load local tasks.
   grunt.loadTasks('tasks');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task. csslint:all will fail, that's okay until there's unit tests
-  grunt.registerTask('default', 'lint csslint'.split(' ') );
+  grunt.registerTask('default', 'jshint csslint'.split(' ') );
 
 };

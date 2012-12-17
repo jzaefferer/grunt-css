@@ -65,6 +65,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerMultiTask( "cssmin", "Minify CSS files with Sqwish.", function() {
+    var banner;
     var helpers = require('grunt-lib-legacyhelpers').init(grunt);
     // get banner here
     var max = helpers.concat( grunt.file.expandFiles( this.file.src ) );
