@@ -2,12 +2,12 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    pkg: '<json:package.json>',
-    lint: {
-      files: ['grunt.js', 'tasks/**/*.js', 'test/**/*.js']
+    pkg: grunt.file.readJSON('package.json'),
+    jshint: {
+      files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
     },
     watch: {
-      files: '<config:lint.files>',
+      files: '<%= jshint.files %>',
       tasks: 'default'
     },
     jshint: {
@@ -34,14 +34,16 @@ module.exports = function(grunt) {
       empty: 'test/empty.css',
       all: 'test/*.css'
     },
-    banner: '/*my awesome css banner */',
     cssmin: {
+      options: { 
+        banner: '/*my awesome css banner */'
+      },
       plain: {
         src: 'test/valid.css',
         dest: 'valid.min.css'
       },
       banner: {
-        src: ['<banner:banner>', 'test/valid.css' ],
+        src: ['<%= cssmin.options.banner %>', 'test/valid.css' ],
         dest: 'valid.min.banner.css'
       }
     }
@@ -49,8 +51,9 @@ module.exports = function(grunt) {
 
   // Load local tasks.
   grunt.loadTasks('tasks');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task. csslint:all will fail, that's okay until there's unit tests
-  grunt.registerTask('default', 'lint csslint');
+  grunt.registerTask('default', 'jshint csslint'.split(' ') );
 
 };
