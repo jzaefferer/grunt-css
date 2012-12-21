@@ -1,33 +1,16 @@
 module.exports = function(grunt) {
+  "use strict";
 
-  // Project configuration.
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
+      files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js'],
+      options: {
+        jshintrc: ".jshintrc"
+      }
     },
     watch: {
       files: '<%= jshint.files %>',
       tasks: 'default'
-    },
-    jshint: {
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        node: true,
-        trailing: true
-      },
-      globals: {
-        exports: true
-      }
     },
     csslint: {
       valid: 'test/valid.css',
@@ -35,7 +18,7 @@ module.exports = function(grunt) {
       all: 'test/*.css'
     },
     cssmin: {
-      options: { 
+      options: {
         banner: '/*my awesome css banner */'
       },
       plain: {
@@ -54,6 +37,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task. csslint:all will fail, that's okay until there's unit tests
-  grunt.registerTask('default', 'jshint csslint'.split(' ') );
+  grunt.registerTask('default', ['jshint', 'csslint'] );
 
 };
