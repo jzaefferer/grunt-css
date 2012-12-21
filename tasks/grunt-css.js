@@ -60,10 +60,10 @@ module.exports = function(grunt) {
       }
 
     });
-    if (hadErrors) {
+    if ( hadErrors ) {
       return false;
     }
-    grunt.log.writeln( "Lint free files: " + files.length );
+    grunt.log.ok( files.length + " files lint free." );
   });
 
   grunt.registerMultiTask( "cssmin", "Minify CSS files with clean-css.", function() {
