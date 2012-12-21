@@ -4,9 +4,9 @@
 
 ## Getting Started
 
-Install the module with: `npm install grunt-css`
+Install the module with: `npm install grunt-css --save-dev`
 
-Then load it from your own `grunt.js` file:
+Then load it from your own `Gruntfile.js` file:
 
 ```js
 grunt.loadNpmTasks('grunt-css');
@@ -20,7 +20,44 @@ This plugin provides two tasks: `cssmin` and `csslint`. Both area [multi tasks][
 
 ### cssmin
 
-This works just like the [built-in `min` task, so check docs for that](https://github.com/cowboy/grunt/blob/master/docs/task_min.md).
+This works similar to the [`uglify` task](https://github.com/gruntjs/grunt-contrib-uglify). Specify a src and dest property for input and output:
+
+```js
+// Project configuration.
+grunt.initConfig({
+  cssmin: {
+    my_target: {
+      src: 'src/input.css',
+      dest: 'dist/output.min.css'
+    }
+  }
+});
+```
+
+#### Banner comments
+
+In this example, running `grunt cssmin:my_target` will prepend a banner created by interpolating the `banner` template string with the config object. Here, those properties are the values imported from the `package.json` file (which are available via the `pkg` config property) plus today's date.
+
+
+```js
+// Project configuration.
+grunt.initConfig({
+  pkg: grunt.file.readJSON('package.json'),
+  cssmin: {
+    options: {
+      banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+        '<%= grunt.template.today("yyyy-mm-dd") %> */'
+    },
+    my_target: {
+      files: {
+        src: 'src/input.css',
+        dest: 'dist/output.min.css'
+      }
+    }
+  }
+});
+```
+
 
 ### csslint
 

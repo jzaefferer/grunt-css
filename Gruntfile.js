@@ -2,6 +2,7 @@ module.exports = function(grunt) {
   "use strict";
 
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
     jshint: {
       files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js'],
       options: {
@@ -24,7 +25,7 @@ module.exports = function(grunt) {
       },
       banner: {
         options: {
-          banner: '/*my awesome css banner */'
+          banner: '/* <%= pkg.name %> - v<%= pkg.version %> - my awesome css banner */'
         },
         src: 'test/valid.css',
         dest: 'valid.min.banner.css'
