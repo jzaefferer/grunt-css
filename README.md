@@ -34,6 +34,27 @@ grunt.initConfig({
 });
 ```
 
+Exposes option of clean-css, which you can set per target or for all, as usual:
+keepSpecialComments
+
+```js
+// Project configuration.
+grunt.initConfig({
+  cssmin: {
+    options: {
+      keepSpecialComments: 0
+    },
+    my_target: {
+      options: {
+        keepSpecialComments: 1
+      },
+      src: 'src/input.css',
+      dest: 'dist/output.min.css'
+    }
+  }
+});
+```
+
 #### Banner comments
 
 In this example, running `grunt cssmin:my_target` will prepend a banner created by interpolating the `banner` template string with the config object. Here, those properties are the values imported from the `package.json` file (which are available via the `pkg` config property) plus today's date.
@@ -65,13 +86,13 @@ This is similar to the built-in lint task, though the configuration is different
 
 ```js
 csslint: {
-	base_theme: {
-		src: "themes/base/*.css",
-		rules: {
-			"import": false,
-			"overqualified-elements": 2
-		}
-	}
+  base_theme: {
+    src: "themes/base/*.css",
+    rules: {
+      "import": false,
+      "overqualified-elements": 2
+    }
+  }
 }
 ```
 
@@ -79,38 +100,38 @@ csslint: {
 
 For the current csslint version, these rules are available:
 
-	important
-	adjoining-classes
-	known-properties
-	box-sizing
-	box-model
-	outline-none
-	duplicate-background-images
-	compatible-vendor-prefixes
-	display-property-grouping
-	qualified-headings
-	fallback-colors
-	duplicate-properties
-	empty-rules
-	errors
-	shorthand
-	ids
-	gradients
-	font-sizes
-	font-faces
-	floats
-	underscore-property-hack
-	overqualified-elements
-	import
-	regex-selectors
-	rules-count
-	star-property-hack
-	text-indent
-	unique-headings
-	universal-selector
-	unqualified-attributes
-	vendor-prefix
-	zero-units
+  important
+  adjoining-classes
+  known-properties
+  box-sizing
+  box-model
+  outline-none
+  duplicate-background-images
+  compatible-vendor-prefixes
+  display-property-grouping
+  qualified-headings
+  fallback-colors
+  duplicate-properties
+  empty-rules
+  errors
+  shorthand
+  ids
+  gradients
+  font-sizes
+  font-faces
+  floats
+  underscore-property-hack
+  overqualified-elements
+  import
+  regex-selectors
+  rules-count
+  star-property-hack
+  text-indent
+  unique-headings
+  universal-selector
+  unqualified-attributes
+  vendor-prefix
+  zero-units
 
 For an explanation of those rules, [check the csslint wiki](https://github.com/stubbornella/csslint/wiki/Rules).
 

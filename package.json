@@ -25,7 +25,7 @@
     "node": ">=0.6.0"
   },
   "dependencies": {
-    "sqwish": "0.2.0",
+    "clean-css": "0.9.1",
     "csslint": "0.9.9",
     "gzip-js": "0.3.1"
   },

@@ -66,12 +66,12 @@ module.exports = function(grunt) {
     grunt.log.writeln( "Lint free files: " + files.length );
   });
 
-  grunt.registerMultiTask( "cssmin", "Minify CSS files with Sqwish.", function() {
+  grunt.registerMultiTask( "cssmin", "Minify CSS files with clean-css.", function() {
     var options = this.options({
       banner: ''
     });
     var src = grunt.file.read( this.file.src );
-    var min = require( "sqwish" ).minify( src, false );
+    var min = require( "clean-css" ).process( src, options );
     if ( options.banner ) {
       min = options.banner + grunt.util.linefeed + min;
     }
