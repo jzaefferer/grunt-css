@@ -18,15 +18,15 @@ module.exports = function(grunt) {
       all: 'test/*.css'
     },
     cssmin: {
-      options: {
-        banner: '/*my awesome css banner */'
-      },
       plain: {
         src: 'test/valid.css',
         dest: 'valid.min.css'
       },
       banner: {
-        src: ['<%= cssmin.options.banner %>', 'test/valid.css' ],
+        options: {
+          banner: '/*my awesome css banner */'
+        },
+        src: 'test/valid.css',
         dest: 'valid.min.banner.css'
       }
     }

@@ -7,6 +7,8 @@
  */
 
 module.exports = function(grunt) {
+  "use strict";
+
   function min_max(min, max) {
     var gzip = require('gzip-js');
     var gzipSize = String(gzip.zip(min, {}).length);
@@ -65,14 +67,17 @@ module.exports = function(grunt) {
   });
 
   grunt.registerMultiTask( "cssmin", "Minify CSS files with Sqwish.", function() {
-    var banner;
-    var helpers = require('grunt-lib-legacyhelpers').init(grunt);
-    // get banner here
-    var max = helpers.concat( grunt.file.expandFiles( this.file.src ) );
-    var min = require( "sqwish" ).minify( max, false );
+    var options = this.options({
+      banner: ''
+    });
+    var src = grunt.file.read( this.file.src );
+    var min = require( "sqwish" ).minify( src, false );
+    if ( options.banner ) {
+      min = options.banner + grunt.util.linefeed + min;
+    }
     grunt.file.write( this.file.dest, min );
-    grunt.log.writeln( "File '" + this.file.dest + "' created." );
-    min_max( min, max );
+    grunt.log.writeln( "File '" + this.file.dest + "' written." );
+    min_max( min, src );
   });
 
 };
