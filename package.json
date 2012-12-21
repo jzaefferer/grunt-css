@@ -27,11 +27,11 @@
   "dependencies": {
     "sqwish": "0.2.0",
     "csslint": "0.9.9",
-    "gzip-js": "0.3.1",
-    "grunt-contrib-jshint": "~0.1.0"
+    "gzip-js": "0.3.1"
   },
   "devDependencies": {
-    "grunt": "0.4.x"
+    "grunt": "0.4.x",
+    "grunt-contrib-jshint": "0.1.0"
   },
   "keywords": [
     "gruntplugin"
