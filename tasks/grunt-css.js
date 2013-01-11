@@ -16,9 +16,13 @@ module.exports = function(grunt) {
     grunt.log.writeln('Compressed size: ' + gzipSize.green + ' bytes gzipped (' + String(min.length).green + ' bytes minified).');
   }
 
+  function expandFiles( files ) {
+    return grunt.util._.pluck( grunt.file.expandMapping( files ), "src" );
+  }
+
   grunt.registerMultiTask( "csslint", "Lint CSS files with csslint", function() {
     var csslint = require( "csslint" ).CSSLint;
-    var files = grunt.file.expandFiles( this.file.src );
+    var files = expandFiles( this.filesSrc );
     var ruleset = {};
     var verbose = grunt.verbose;
     csslint.getRules().forEach(function( rule ) {

@@ -38,6 +38,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task. csslint:all will fail, that's okay until there's unit tests
-  grunt.registerTask('default', ['jshint', 'csslint'] );
+  grunt.registerTask('default', ['jshint', 'csslint:valid', 'csslint:empty'] );
+  grunt.registerTask('fails', ['jshint', 'csslint'] );
 
 };
