@@ -74,13 +74,13 @@ module.exports = function(grunt) {
     var options = this.options({
       banner: ''
     });
-    var src = grunt.file.read( this.file.src );
+    var src = grunt.file.read( this.filesSrc );
     var min = require( "clean-css" ).process( src, options );
     if ( options.banner ) {
       min = options.banner + grunt.util.linefeed + min;
     }
-    grunt.file.write( this.file.dest, min );
-    grunt.log.writeln( "File '" + this.file.dest + "' written." );
+    grunt.file.write( this.files[0].dest, min );
+    grunt.log.writeln( "File '" + this.files[0].dest + "' written." );
     min_max( min, src );
   });
 
