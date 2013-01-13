@@ -22,6 +22,9 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask( "csslint", "Lint CSS files with csslint", function() {
     var csslint = require( "csslint" ).CSSLint;
+
+
+
     var files = expandFiles( this.filesSrc );
     var ruleset = {};
     var verbose = grunt.verbose;
@@ -37,6 +40,7 @@ module.exports = function(grunt) {
     }
     var hadErrors = 0;
     files.forEach(function( filepath ) {
+      grunt.log.writeln( "Reading filepath..." );
       var file = grunt.file.read( filepath ),
         message = "Linting " + filepath + "...",
         result;
@@ -71,16 +75,33 @@ module.exports = function(grunt) {
   });
 
   grunt.registerMultiTask( "cssmin", "Minify CSS files with clean-css.", function() {
+
+
     var options = this.options({
       banner: ''
     });
-    var src = grunt.file.read( this.filesSrc );
+
+    // check this.file for backward-compatible API.
+    var src = grunt.file.read( this.file ? this.file.srcRaw : this.filesSrc );
+
     var min = require( "clean-css" ).process( src, options );
+
     if ( options.banner ) {
       min = options.banner + grunt.util.linefeed + min;
     }
-    grunt.file.write( this.files[0].dest, min );
-    grunt.log.writeln( "File '" + this.files[0].dest + "' written." );
+
+    /* XXX: does this make sense ? */
+    // newer/older API?
+    var dest;
+    if( this.files )
+        dest = this.files[0].dest;
+
+    // for grunt@~0.4.0rc2
+    if( this.data.dest )
+        dest = this.data.dest;
+
+    grunt.file.write( dest, min );
+    grunt.log.writeln( "File '" + dest + "' written." );
     min_max( min, src );
   });
 
