@@ -40,7 +40,7 @@ module.exports = function(grunt) {
     }
     var hadErrors = 0;
     files.forEach(function( filepath ) {
-      grunt.log.writeln( "Reading filepath..." );
+      grunt.log.writeln( "Reading " + filepath );
       var file = grunt.file.read( filepath ),
         message = "Linting " + filepath + "...",
         result;
