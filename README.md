@@ -91,12 +91,14 @@ csslint: {
     rules: {
       "import": false,
       "overqualified-elements": 2
-    }
+    },
+    junit: "build/reports/csslint.xml",
+    checkstyle: "build/reports/csslint_checkstyle.xml"
   }
 }
 ```
 
-`src` specifies the files to lint, `rules` the rules to apply. A value of `false` ignores the rule, a value of `2` will set it to become an error. Otherwise all rules are considered warnings.
+`src` specifies the files to lint, `rules` the rules to apply. A value of `false` ignores the rule, a value of `2` will set it to become an error. Otherwise all rules are considered warnings. `junit` and `checkstyle` are optional. They specify the relative path to the report files that will be generated.
 
 For the current csslint version, these rules are available:
 
