@@ -2,6 +2,8 @@
 
 [Grunt](https://github.com/cowboy/grunt) plugin for linting and minifying CSS
 
+*Note: The current release (0.5.x) is not compatible with grunt 0.3.x, only with grunt 0.4.x. For grunt 0.3.x, use `npm install grunt-css@0.4.1`. Sorry about the mess.*
+
 ## Getting Started
 
 Install the module with: `npm install grunt-css --save-dev`
