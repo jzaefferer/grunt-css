@@ -29,8 +29,7 @@ This works similar to the [`uglify` task](https://github.com/gruntjs/grunt-contr
 grunt.initConfig({
   cssmin: {
     my_target: {
-      src: 'src/input.css',
-      dest: 'dist/output.min.css'
+      'dist/output.min.css': 'src/input.css'
     }
   }
 });
@@ -50,8 +49,9 @@ grunt.initConfig({
       options: {
         keepSpecialComments: 1
       },
-      src: 'src/input.css',
-      dest: 'dist/output.min.css'
+      files: {
+  			'dist/output.min.css': 'src/input.css'
+			}
     }
   }
 });
@@ -73,8 +73,7 @@ grunt.initConfig({
     },
     my_target: {
       files: {
-        src: 'src/input.css',
-        dest: 'dist/output.min.css'
+        'dist/output.min.css': 'src/input.css'
       }
     }
   }
