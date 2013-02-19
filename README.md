@@ -113,27 +113,30 @@ For the current csslint version, these rules are available:
 	known-properties
 	box-sizing
 	box-model
-	outline-none
-	duplicate-background-images
-	compatible-vendor-prefixes
+	overqualified-elements
 	display-property-grouping
-	qualified-headings
-	fallback-colors
+	bulletproof-font-face
+	compatible-vendor-prefixes
+	regex-selectors
+	errors
+	duplicate-background-images
 	duplicate-properties
 	empty-rules
-	errors
-	shorthand
-	ids
+	selector-max-approaching
 	gradients
+	fallback-colors
 	font-sizes
 	font-faces
 	floats
-	underscore-property-hack
-	overqualified-elements
-	import
-	regex-selectors
-	rules-count
 	star-property-hack
+	outline-none
+	import
+	ids
+	underscore-property-hack
+	rules-count
+	qualified-headings
+	selector-max
+	shorthand
 	text-indent
 	unique-headings
 	universal-selector
