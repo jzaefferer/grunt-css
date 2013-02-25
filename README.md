@@ -2,17 +2,23 @@
 
 [Grunt](https://github.com/cowboy/grunt) plugin for linting and minifying CSS
 
-*Note: The current release (0.5.x) is not compatible with grunt 0.3.x, only with grunt 0.4.x. For grunt 0.3.x, use `npm install grunt-css@0.4.1`. Sorry about the mess.*
-
 ## Getting Started
 
-Install the module with: `npm install grunt-css --save-dev`
+Install the module with:
+
+	npm install grunt-css --save-dev
 
 Then load it from your own `Gruntfile.js` file:
 
 ```js
 grunt.loadNpmTasks('grunt-css');
 ```
+
+### grunt 0.3 compability
+
+If you're using grunt 0.3, install the 0.1.0 version of this task:
+
+	npm install grunt-css@0.3.2
 
 ## Documentation
 
@@ -27,12 +33,12 @@ This works similar to the [`uglify` task](https://github.com/gruntjs/grunt-contr
 ```js
 // Project configuration.
 grunt.initConfig({
-  cssmin: {
-    my_target: {
-      src: 'src/input.css',
-      dest: 'dist/output.min.css'
-    }
-  }
+	cssmin: {
+		my_target: {
+			src: 'src/input.css',
+			dest: 'dist/output.min.css'
+		}
+	}
 });
 ```
 
@@ -42,18 +48,18 @@ keepSpecialComments
 ```js
 // Project configuration.
 grunt.initConfig({
-  cssmin: {
-    options: {
-      keepSpecialComments: 0
-    },
-    my_target: {
-      options: {
-        keepSpecialComments: 1
-      },
-      src: 'src/input.css',
-      dest: 'dist/output.min.css'
-    }
-  }
+	cssmin: {
+		options: {
+			keepSpecialComments: 0
+		},
+		my_target: {
+			options: {
+				keepSpecialComments: 1
+			},
+			src: 'src/input.css',
+			dest: 'dist/output.min.css'
+		}
+	}
 });
 ```
 
@@ -65,19 +71,19 @@ In this example, running `grunt cssmin:my_target` will prepend a banner created 
 ```js
 // Project configuration.
 grunt.initConfig({
-  pkg: grunt.file.readJSON('package.json'),
-  cssmin: {
-    options: {
-      banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %> */'
-    },
-    my_target: {
-      files: {
-        src: 'src/input.css',
-        dest: 'dist/output.min.css'
-      }
-    }
-  }
+	pkg: grunt.file.readJSON('package.json'),
+	cssmin: {
+		options: {
+			banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+				'<%= grunt.template.today("yyyy-mm-dd") %> */'
+		},
+		my_target: {
+			files: {
+				src: 'src/input.css',
+				dest: 'dist/output.min.css'
+			}
+		}
+	}
 });
 ```
 
@@ -88,13 +94,13 @@ This is similar to the built-in lint task, though the configuration is different
 
 ```js
 csslint: {
-  base_theme: {
-    src: "themes/base/*.css",
-    rules: {
-      "import": false,
-      "overqualified-elements": 2
-    }
-  }
+	base_theme: {
+		src: "themes/base/*.css",
+		rules: {
+			"import": false,
+			"overqualified-elements": 2
+		}
+	}
 }
 ```
 
@@ -102,38 +108,38 @@ csslint: {
 
 For the current csslint version, these rules are available:
 
-  important
-  adjoining-classes
-  known-properties
-  box-sizing
-  box-model
-  outline-none
-  duplicate-background-images
-  compatible-vendor-prefixes
-  display-property-grouping
-  qualified-headings
-  fallback-colors
-  duplicate-properties
-  empty-rules
-  errors
-  shorthand
-  ids
-  gradients
-  font-sizes
-  font-faces
-  floats
-  underscore-property-hack
-  overqualified-elements
-  import
-  regex-selectors
-  rules-count
-  star-property-hack
-  text-indent
-  unique-headings
-  universal-selector
-  unqualified-attributes
-  vendor-prefix
-  zero-units
+	important
+	adjoining-classes
+	known-properties
+	box-sizing
+	box-model
+	outline-none
+	duplicate-background-images
+	compatible-vendor-prefixes
+	display-property-grouping
+	qualified-headings
+	fallback-colors
+	duplicate-properties
+	empty-rules
+	errors
+	shorthand
+	ids
+	gradients
+	font-sizes
+	font-faces
+	floats
+	underscore-property-hack
+	overqualified-elements
+	import
+	regex-selectors
+	rules-count
+	star-property-hack
+	text-indent
+	unique-headings
+	universal-selector
+	unqualified-attributes
+	vendor-prefix
+	zero-units
 
 For an explanation of those rules, [check the csslint wiki](https://github.com/stubbornella/csslint/wiki/Rules).
 
