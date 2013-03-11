@@ -2,6 +2,8 @@
 
 [Grunt](https://github.com/cowboy/grunt) plugin for linting and minifying CSS
 
+**Note: This plugin is deprecated and won't be updated anymore. For the `cssmin` task, use [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin) instead, for `csslint`, use [grunt-contrib-csslint](https://github.com/gruntjs/grunt-contrib-csslint).**
+
 ## Getting Started
 
 Install the module with:
