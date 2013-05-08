@@ -74,14 +74,17 @@ module.exports = function(grunt) {
     var options = this.options({
       banner: ''
     });
-    var src = grunt.file.read( this.filesSrc );
-    var min = require( "clean-css" ).process( src, options );
-    if ( options.banner ) {
-      min = options.banner + grunt.util.linefeed + min;
+    var files = expandFiles( this.filesSrc );
+    for ( var i = 0; i < files.length; i += 1 ) {
+      var src = grunt.file.read( this.files[i].src );
+      var min = require( "clean-css" ).process( src, options );
+      if ( options.banner ) {
+        min = options.banner + grunt.util.linefeed + min;
+      }
+      grunt.file.write( this.files[i].dest, min );
+      grunt.log.writeln( "File '" + this.files[i].dest + "' written." );
+      min_max( min, src );
     }
-    grunt.file.write( this.files[0].dest, min );
-    grunt.log.writeln( "File '" + this.files[0].dest + "' written." );
-    min_max( min, src );
   });
 
 };
