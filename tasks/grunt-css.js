@@ -53,7 +53,7 @@ module.exports = function(grunt) {
         }
 
         result.messages.forEach(function( message ) {
-          grunt.log.writeln( "[".red + (typeof message.line !== "undefined" ? ( "L" + message.line ).yellow + ":".red + ( "C" + message.col ).yellow : "GENERAL".yellow) + "]".red );
+          grunt.log.writeln( "[".red + filepath.yellow + ":".red + (typeof message.line !== "undefined" ? ( "L" + message.line ).yellow + ":".red + ( "C" + message.col ).yellow : "GENERAL".yellow) + "]".red );
           grunt.log[ message.type === "error" ? "error" : "writeln" ]( message.message + " " + message.rule.desc + " (" + message.rule.id + ")" );
         });
         if ( result.messages.length ) {
